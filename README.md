@@ -1,5 +1,9 @@
 # CierreCentralesCobre
 
+## Enlace a APP
+Puedes ver la aplicación en el siguiente enlace:
+[https://share.streamlit.io/aamasuno/cierrecentralescobre/main/main.py](https://share.streamlit.io/aamasuno/cierrecentralescobre/main/main.py)
+
 ## Finalidad
 La Comisión Nacional de los Mercados y la Competencia (CNMC) dentro de sus concreciones y obligaciones en el ámbito de las Telecomunicaciones publica periódicamente el listado de cierre de centrales de cobre en su web de manera pública.
 
