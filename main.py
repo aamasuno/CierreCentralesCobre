@@ -10,7 +10,7 @@ import math
 import plotly.graph_objects as go
 import plotly.express as px
 
-#locale.setlocale(locale.LC_TIME, 'es_ES')# this sets the date time formats to es_ES
+locale.setlocale(locale.LC_TIME, 'es_ES')# this sets the date time formats to es_ES
 st.set_page_config(page_title='Cierre de centrales de cobre',layout="wide")
 
 @st.cache(allow_output_mutation=True)
