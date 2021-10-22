@@ -13,7 +13,6 @@ import plotly.express as px
 locale.setlocale(locale.LC_TIME, 'es_ES')# this sets the date time formats to es_ES
 st.set_page_config(page_title='Cierre de centrales de cobre',layout="wide")
 
-@st.cache(allow_output_mutation=True)
 def cargar_csv():
         # concretar la pagina donde se localiza el archivo
         url='https://www.cnmc.es/ambitos-de-actuacion/telecomunicaciones/concrecion-desarrollo-obligaciones'
@@ -61,7 +60,6 @@ def estado_central(df):
         else:
                 return 'FECHA PROGRAMADA'
 
-@st.cache(allow_output_mutation=True)
 def add_cautonoma_estado(df):
         df['CODIGOPROV'] = df['Código MIGA'].apply(lambda x: math.floor(x/100000)).astype('int64')
         cautonoma = tab_cautonoma()
