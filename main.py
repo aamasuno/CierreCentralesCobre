@@ -13,7 +13,7 @@ import plotly.express as px
 locale.setlocale(locale.LC_TIME, 'es_ES')# this sets the date time formats to es_ES
 st.set_page_config(page_title='Cierre de centrales de cobre',layout="wide")
 
-def cargar_csv():
+def buscar_enlace():
         # concretar la pagina donde se localiza el archivo
         url='https://www.cnmc.es/ambitos-de-actuacion/telecomunicaciones/concrecion-desarrollo-obligaciones'
         # el user-agent de requests nos da error 403 Forbidden por defecto, configuramos un user-agent
@@ -32,7 +32,10 @@ def cargar_csv():
         # vemos que hay dos archivos de centrales, cogemos el primero, el segundo corresponde al utilizado para el
         # modelo de costes, que se encuentra dispuesto debajo del apartado de cierre. Añadimos cabecera de la web
         urlcentral='https://www.cnmc.es'+urlcentral[0]
+        return urlcentral
 
+@st.cache(allow_output_mutation=True)
+def cargar_csv(urlcentral):       
        # El archivo también se encuentra con error 403 Forbidden al acceder, especificamos el mismo user-agent
         response = requests.get(urlcentral,headers=headers)
         # io nos permite convertir la tabla es un file_object valido para la función read_csv. Decode nos permite
@@ -75,7 +78,8 @@ def set_value(rec,code):
                 val=0
         return val
 
-dfcierre = cargar_csv()
+urlcentral = buscar_enlace()
+dfcierre = cargar_csv(urlcentral)
 dfcierre = add_cautonoma_estado(dfcierre)
 
 st.title('Proceso de cierre de centrales de cobre')
