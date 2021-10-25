@@ -54,7 +54,6 @@ def tab_cautonoma():
         df =pd.read_csv('provincia.csv',sep=';')
         return df
 
-@st.cache(allow_output_mutation=True)
 def estado_central(df):
         if df['Cierre definitivo'] <= datetime.now():
                 return 'CERRADA'
@@ -63,6 +62,7 @@ def estado_central(df):
         else:
                 return 'FECHA PROGRAMADA'
 
+@st.cache(allow_output_mutation=True)
 def add_cautonoma_estado(df):
         df['CODIGOPROV'] = df['Código MIGA'].apply(lambda x: math.floor(x/100000)).astype('int64')
         cautonoma = tab_cautonoma()
