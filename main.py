@@ -35,8 +35,10 @@ def buscar_enlace():
         return urlcentral
 
 @st.cache(allow_output_mutation=True)
-def cargar_csv(urlcentral):       
-       # El archivo también se encuentra con error 403 Forbidden al acceder, especificamos el mismo user-agent
+def cargar_csv(urlcentral):
+        # el user-agent de requests nos da error 403 Forbidden por defecto, configuramos un user-agent
+        headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
+        # El archivo también se encuentra con error 403 Forbidden al acceder, especificamos el mismo user-agent
         response = requests.get(urlcentral,headers=headers)
         # io nos permite convertir la tabla es un file_object valido para la función read_csv. Decode nos permite
         # decode iso-8859-1 nos permite decodificar todos los bytes del archivo, incluido tildes.
