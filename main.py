@@ -64,7 +64,6 @@ def estado_central(df):
         else:
                 return 'FECHA PROGRAMADA'
 
-@st.cache(allow_output_mutation=True)
 def add_cautonoma_estado(df):
         df['CODIGOPROV'] = df['Código MIGA'].apply(lambda x: math.floor(x/100000)).astype('int64')
         cautonoma = tab_cautonoma()
